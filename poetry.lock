@@ -395,6 +395,18 @@ files = [
 ptyprocess = ">=0.5"
 
 [[package]]
+name = "phidget22"
+version = "1.14.20230331"
+description = "Phidget22 Python wrapper library"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "Phidget22-1.14.20230331-py3-none-any.whl", hash = "sha256:0f9394fe7e0283040dd8c277cf9aa2372c13da132fd05df9887d758fd5d37bc1"},
+    {file = "Phidget22-1.14.20230331.tar.gz", hash = "sha256:b9f8f3cd595013b60c2c20deed35410dd4ae050ac5f3a3536e0408af55da8d82"},
+]
+
+[[package]]
 name = "pickleshare"
 version = "0.7.5"
 description = "Tiny 'shelve'-like database with concurrency support"
@@ -529,6 +541,21 @@ files = [
 
 [package.extras]
 plugins = ["importlib-metadata"]
+
+[[package]]
+name = "pyserial"
+version = "3.5"
+description = "Python Serial Port Extension"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pyserial-3.5-py2.py3-none-any.whl", hash = "sha256:c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0"},
+    {file = "pyserial-3.5.tar.gz", hash = "sha256:3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb"},
+]
+
+[package.extras]
+cp2110 = ["hidapi"]
 
 [[package]]
 name = "pyyaml"
@@ -674,4 +701,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10,<3.12"
-content-hash = "993bb7836b7f4cee58e63272a04bef10b5c7e19fb70ac0b41ec150f3d201f15e"
+content-hash = "183c40ceb66e1787ce423318a562420b1f4726b38d258b90b6f95f75e6cf9bed"
