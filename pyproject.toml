@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "evora-wheel"
+version = "0.1.0"
+description = "Controller and server for the Evora filter wheel"
+authors = ["José Sánchez-Gallego <gallegoj@uw.edu>"]
+license = "BSD-3-Clause"
+readme = "README.md"
+packages = [{include = "evora_wheel", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10,<3.12"
+daemonocle = "^1.0.2"
+click = "^8.1.3"
+sdsstools = "^1.0.2"
+click-default-group = "^1.2.2"
+
+[tool.poetry.dev-dependencies]
+ipython = ">=8.0.0"
+flake8 = ">=3.7.9"
+isort = ">=5.0.0"
+ipdb = ">=0.13.3"
+black = {version = ">=21.10b0", allow-prereleases = true}
+
+[tool.poetry.scripts]
+evora-wheel = "evora_wheel.__main__:evora_wheel"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+fast = true
+
+[tool.isort]
+profile = "black"
+sections = ["FUTURE", "STDLIB", "TYPING", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+default_section = "THIRDPARTY"
+known_first_party = "evora_wheel"
+known_typing = ["typing"]
+lines_after_imports = 2
+
+[build-system]
+requires = ["poetry-core>=1.1.0"]
+build-backend = "poetry.core.masonry.api"
