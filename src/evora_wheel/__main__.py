@@ -14,6 +14,8 @@ import click
 from click_default_group import DefaultGroup
 from sdsstools.daemonizer import DaemonGroup
 
+from evora_wheel.server import EvoraWheelServer
+
 
 def cli_coro(f):
     """Decorator function that allows defining coroutines with click."""
@@ -31,11 +33,12 @@ def cli_coro(f):
     default="actor",
     default_if_no_args=True,
 )
+@click.option("--dummy", is_flag=True, help="Run the dummy wheel.")
 @click.pass_context
-def evora_wheel(ctx, config_file: str | None = None):
+def evora_wheel(ctx, dummy: bool = False):
     """Evora wheel actor."""
 
-    ctx.obj = {"config_file": config_file}
+    ctx.obj = {"dummy": dummy}
 
 
 @evora_wheel.group(cls=DaemonGroup, prog="evora_wheel", workdir=os.getcwd())
@@ -44,8 +47,9 @@ def evora_wheel(ctx, config_file: str | None = None):
 async def actor(ctx):
     """Runs the actor."""
 
-    while True:
-        await asyncio.sleep(1)
+    dummy = ctx.obj.get("dummy", False)
+    server = EvoraWheelServer(dummy=dummy)
+    await server.start()
 
 
 def main():
