@@ -58,19 +58,23 @@ class EvoraWheelServer:
         message = data.decode().strip()
 
         try:
+            reply = ""
             if message.startswith("home"):
                 await self.run(self.wheel.home)
             elif message.startswith("move"):
                 num = int(message.split()[1])
                 await self.run(self.wheel.moveFilter, num)
             elif message.startswith("get"):
-                await self.run(self.wheel.getFilterPos)
+                reply = str(await self.run(self.wheel.getFilterPos))
+                print(reply)
             else:
                 raise FilterWheelError(f"Unknown command {message}")
         except Exception as err:
             writer.write((f"ERR,{err}\n").encode())
         else:
-            writer.write(b"OK\n")
+            writer.write(b"OK")
+            if reply != "":
+                writer.write((f",{reply}").encode())
 
         await writer.drain()
 
@@ -81,4 +85,4 @@ class EvoraWheelServer:
         """Runs a method in an executor."""
 
         loop = asyncio.get_running_loop()
-        await loop.run_in_executor(None, method, *args)
+        return await loop.run_in_executor(None, method, *args)
