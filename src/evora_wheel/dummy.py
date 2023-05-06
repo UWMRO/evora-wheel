@@ -8,6 +8,8 @@
 
 from __future__ import annotations
 
+from time import sleep
+
 from typing import Any
 
 from .wheel import FilterWheelError
@@ -34,6 +36,8 @@ class EvoraFilterWheelDummy:
     def home(self):
         """Homes the filter wheel."""
 
+        sleep(5)
+
         self._filterPos = 0
         return True
 
@@ -50,6 +54,8 @@ class EvoraFilterWheelDummy:
 
         if num < 0 or num > 5:
             raise FilterWheelError("Invalid filter position.")
+
+        sleep(5)
 
         self._filterPos = num
 
