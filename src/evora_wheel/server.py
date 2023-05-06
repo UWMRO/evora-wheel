@@ -66,7 +66,6 @@ class EvoraWheelServer:
                 await self.run(self.wheel.moveFilter, num)
             elif message.startswith("get"):
                 reply = str(await self.run(self.wheel.getFilterPos))
-                print(reply)
             else:
                 raise FilterWheelError(f"Unknown command {message}")
         except Exception as err:
