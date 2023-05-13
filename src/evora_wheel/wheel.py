@@ -45,7 +45,6 @@ class EvoraFilterWheel:
         self.SerialPort = serial.Serial(self.SerialPortAddress, 9600, timeout=2)
 
         log.info("Filterwheel connection successful.")
-        return True
 
     def disconnDev(self):
         "Disconnects the stepper and serial port."
