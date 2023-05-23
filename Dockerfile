@@ -15,4 +15,4 @@ RUN cd evora-wheel && pip3 install .
 # Connect repo to package
 LABEL org.opencontainers.image.source https://github.com/uwmro/evora-wheel
 
-ENTRYPOINT evora-wheel --dummy start --debug
+ENTRYPOINT evora-wheel start --debug
