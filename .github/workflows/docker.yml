@@ -11,7 +11,7 @@ on:
 
 jobs:
   docker:
-    runs-on: buildjet-2vcpu-ubuntu-2204-arm
+    runs-on: arm-ubuntu-24
     env:
       USER: uwmro
       APP: evora-wheel
