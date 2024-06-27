@@ -10,23 +10,19 @@ jobs:
     name: Build macOS wheels
     runs-on: macos-latest
 
-    strategy:
-      matrix:
-        python-version: ['3.10']
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Create release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: evora_wheel ${{ github.ref_name }}
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
