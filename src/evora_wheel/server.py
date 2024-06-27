@@ -38,8 +38,6 @@ class EvoraWheelServer:
 
         self.server = await asyncio.start_server(self.handle_message, "0.0.0.0", PORT)
 
-        addrs = ", ".join(str(sock.getsockname()) for sock in self.server.sockets)
-
         try:
             async with self.server:
                 await self.server.serve_forever()
