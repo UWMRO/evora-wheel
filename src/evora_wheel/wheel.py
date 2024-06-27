@@ -15,8 +15,6 @@ __all__ = ["EvoraFilterWheel"]
 import serial
 from Phidget22.Devices.Stepper import Stepper, StepperControlMode
 
-from evora_wheel import log
-
 
 class FilterWheelError(Exception):
     """Filter wheel error."""
@@ -44,8 +42,6 @@ class EvoraFilterWheel:
         self.SerialPortAddress = "/dev/ttyACM0"
         self.SerialPort = serial.Serial(self.SerialPortAddress, 9600, timeout=2)
 
-        log.info("Filterwheel connection successful.")
-
     def disconnDev(self):
         "Disconnects the stepper and serial port."
 
@@ -54,7 +50,6 @@ class EvoraFilterWheel:
         self.stepper.close()
         self.SerialPort.close()
 
-        log.info("Disconnect successful")
         return True
 
     def getHallData(self, index):
@@ -88,7 +83,6 @@ class EvoraFilterWheel:
         self.stepper.setVelocityLimit(0)
         self.stepper.setEngaged(False)
 
-        log.info("Homed")
         return True
 
     def moveFilter(self, num):
@@ -98,7 +92,6 @@ class EvoraFilterWheel:
         self.stepper.setVelocityLimit(self._VELOCITY_LIMIT)
 
         if self._filterPos is None:
-            log.info("Not homed, homing first.")
             self.home()
 
         assert isinstance(self._filterPos, int)
@@ -121,5 +114,4 @@ class EvoraFilterWheel:
         self.stepper.setVelocityLimit(0)
         self.stepper.setEngaged(False)
 
-        log.info("At filter position %d." % num)
         return True

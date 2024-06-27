@@ -8,11 +8,10 @@
 
 import asyncio
 import functools
-import os
 
 import click
 from click_default_group import DefaultGroup
-from sdsstools.daemonizer import DaemonGroup
+from daemonocle import DaemonCLI
 
 from evora_wheel.server import EvoraWheelServer
 
@@ -33,27 +32,27 @@ def cli_coro(f):
     default="actor",
     default_if_no_args=True,
 )
-@click.option("--dummy", is_flag=True, help="Run the dummy wheel.")
-@click.pass_context
-def evora_wheel(ctx, dummy: bool = False):
+def evora_wheel():
     """Evora wheel actor."""
 
-    ctx.obj = {"dummy": dummy}
+    pass
 
 
-@evora_wheel.group(cls=DaemonGroup, prog="evora_wheel", workdir=os.getcwd())
-@click.pass_context
+@evora_wheel.group(
+    cls=DaemonCLI,
+    daemon_params={"pid_file": "/tmp/evora_wheel.pid"},
+)
+@click.option("--dummy", is_flag=True, help="Run the dummy wheel.")
 @cli_coro
-async def actor(ctx):
+async def actor(dummy: bool = False):
     """Runs the actor."""
 
-    dummy = ctx.obj.get("dummy", False)
     server = EvoraWheelServer(dummy=dummy)
     await server.start()
 
 
 def main():
-    evora_wheel()
+    evora_wheel(obj={})
 
 
 if __name__ == "__main__":

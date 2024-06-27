@@ -12,16 +12,12 @@ from __future__ import annotations
 import logging
 
 from typing import cast
-
-from sdsstools.logger import get_logger
-from sdsstools.metadata import get_package_version
+import pkg_resources
 
 
 NAME = "evora-wheel"
 
-log = get_logger(NAME)
-log.sh.setLevel(logging.INFO)
-__version__ = cast(str, get_package_version(path=__file__, package_name=NAME))
+__version__ = pkg_resources.get_distribution(NAME).version
 
 
 from .dummy import EvoraFilterWheelDummy

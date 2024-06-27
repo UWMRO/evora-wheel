@@ -12,7 +12,7 @@ import asyncio
 
 from typing import Callable
 
-from evora_wheel import EvoraFilterWheel, EvoraFilterWheelDummy, log
+from evora_wheel import EvoraFilterWheel, EvoraFilterWheelDummy
 from evora_wheel.wheel import FilterWheelError
 
 
@@ -39,7 +39,6 @@ class EvoraWheelServer:
         self.server = await asyncio.start_server(self.handle_message, "0.0.0.0", PORT)
 
         addrs = ", ".join(str(sock.getsockname()) for sock in self.server.sockets)
-        log.info(f"Serving on {addrs}")
 
         try:
             async with self.server:
