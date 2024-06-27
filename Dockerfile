@@ -1,4 +1,4 @@
-FROM balenalib/raspberry-pi-python:3.12-bookworm
+FROM balenalib/raspberry-pi-python:3.11-bookworm
 
 LABEL maintainer="gallegoj@uw.edu"
 
