@@ -249,6 +249,22 @@ files = [
 ]
 
 [[package]]
+name = "ninja"
+version = "1.10.0"
+description = "Ninja is a small build system with a focus on speed"
+optional = false
+python-versions = "*"
+files = [
+    {file = "ninja-1.10.0-py2-none-macosx_10_6_x86_64.whl", hash = "sha256:a4b57528c5f53f3014eb2c1328c08cfe2a4339e9c24799c58f24a3481a125ef3"},
+    {file = "ninja-1.10.0-py2-none-manylinux1_i686.whl", hash = "sha256:75fbe376d655487d8016dae6742d995362095a3d992cefd2d1a33ca6ea21f3e0"},
+    {file = "ninja-1.10.0-py2-none-manylinux1_x86_64.whl", hash = "sha256:9e8674e93d16c890abc41957b5d9cffca645f45d263dc095bb9c96652c848c96"},
+    {file = "ninja-1.10.0-py3-none-macosx_10_6_x86_64.whl", hash = "sha256:6b87f02be70881de8a7325432c3c870ba36b84f9693cfe63abe37a959d8f63b5"},
+    {file = "ninja-1.10.0-py3-none-manylinux1_i686.whl", hash = "sha256:ed3e245fd6c9785370422874f28753c3d79f60a69bfc10414fa5dc8e8c666fbb"},
+    {file = "ninja-1.10.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:d7a33ff0e1c7b88cbb64d88181ac90c66f69b5663396c21eb2548d935cc98250"},
+    {file = "ninja-1.10.0.tar.gz", hash = "sha256:654e739b3fe2595ee023134e3a148fb5c1c31a9894b4eb8ff7060b1a11dc7413"},
+]
+
+[[package]]
 name = "numpy"
 version = "1.26.4"
 description = "Fundamental package for array computing in Python"
@@ -650,4 +666,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<4"
-content-hash = "4a1481c12be99190294470ee343ae14711464fa2e2162d5c473ce2588b5b58f5"
+content-hash = "33cd9006c3311ea43f69dbd7e44b9fee6ab43e4f48e2715a73450d8674fc0765"
