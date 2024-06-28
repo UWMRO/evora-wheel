@@ -15,6 +15,8 @@ RUN cd evora-wheel && pip3 install .
 RUN curl -fsSL https://www.phidgets.com/downloads/setup_linux | bash -
 RUN apt-get install -y libphidget22
 
+EXPOSE 9999
+
 # Connect repo to package
 LABEL org.opencontainers.image.source https://github.com/uwmro/evora-wheel
 
