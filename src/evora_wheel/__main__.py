@@ -44,8 +44,8 @@ def evora_wheel():
 )
 @click.option("--dummy", is_flag=True, help="Run the dummy wheel.")
 @cli_coro
-async def actor(dummy: bool = False):
-    """Runs the actor."""
+async def server(dummy: bool = False):
+    """Runs the server."""
 
     server = EvoraWheelServer(dummy=dummy)
     await server.start()

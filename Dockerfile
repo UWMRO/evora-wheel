@@ -20,4 +20,4 @@ EXPOSE 9999
 # Connect repo to package
 LABEL org.opencontainers.image.source https://github.com/uwmro/evora-wheel
 
-ENTRYPOINT evora-wheel start --debug
+ENTRYPOINT evora-wheel server start --debug
