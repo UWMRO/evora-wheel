@@ -70,3 +70,15 @@ which will ensure the container is restarted if if crashes or if the Raspberry P
 If the server stops responding the first thing to try is rebooting the Raspberry Pi either physically or ssh'ing to `mro@72.233.250.84` and running `sudo reboot` (no password should be needed for `sudo`).
 
 If necessary, you can kill the current container with `docker kill evora-wheel`.
+
+## Server commands
+
+`evora-whell server start` runs a TCP server on port 9999. This server accepts three commands, finished by a newline (`\n`).
+
+- `home` will home the filter wheel and move it to filter position 0.
+- `move <NUM>` will move the filter will the filter position `<NUM>` where `<NUM>` can range from 0 to 5.
+- `get` will return the current position of the filter wheel.
+
+A valid command will return `OK`. The `get` command will return `OK,<NUM>` is the current filter position. Any invalid or incorrectly formatted command will return `ERR`.
+
+The server always closes the client connection after returning `OK` or `ERR`.
